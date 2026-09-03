@@ -1,0 +1,31 @@
+import type { SVGProps } from "react";
+
+/** Figma: Design system → Icons → "arrow-right-disabled" (24×24) */
+export function IconArrowRightDisabled({
+  size,
+  width,
+  height,
+  ...props
+}: SVGProps<SVGSVGElement> & { size?: number | string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      width={width ?? size ?? 24}
+      height={height ?? size ?? 24}
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+      focusable="false"
+      {...props}
+    >
+      <g id="arrow-right-disabled-Icon/arrow-up">
+        <path
+          id="arrow-right-disabled-Vector"
+          d="M12.25 18C12.5261 18 12.75 17.7761 12.75 17.5V9.35534C12.75 9.17716 12.9654 9.08793 13.0914 9.21392L16.5877 12.7102C16.7834 12.9059 17.101 12.9054 17.296 12.7089L17.6489 12.3535C17.843 12.1581 17.8425 11.8425 17.6477 11.6477L15 9L12.3536 6.35355C12.1583 6.15829 11.8417 6.15829 11.6464 6.35355L6.35355 11.6464C6.15829 11.8417 6.15829 12.1583 6.35355 12.3536L6.70426 12.7043C6.8994 12.8994 7.21574 12.8995 7.41105 12.7046L10.9087 9.21318C11.0347 9.08737 11.25 9.17664 11.25 9.35473V17.5C11.25 17.7761 11.4739 18 11.75 18H12.25Z"
+          fill="white"
+          fillOpacity="0.2"
+        />
+      </g>
+    </svg>
+  );
+}

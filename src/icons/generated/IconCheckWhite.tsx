@@ -1,0 +1,39 @@
+import type { SVGProps } from "react";
+
+/** Figma: Design system → Icons → "check-white" (24×24) */
+export function IconCheckWhite({
+  size,
+  width,
+  height,
+  ...props
+}: SVGProps<SVGSVGElement> & { size?: number | string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      width={width ?? size ?? 24}
+      height={height ?? size ?? 24}
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+      focusable="false"
+      {...props}
+    >
+      <g id="check-white-Icon/check">
+        <g id="check-white-Vector">
+          <path
+            d="M10.6346 15.8694C10.5574 15.9426 10.4364 15.9426 10.3593 15.8694L7.1529 12.827C7.06979 12.7481 7.06979 12.6157 7.1529 12.5368L7.73657 11.983C7.81374 11.9098 7.93473 11.9098 8.0119 11.983L10.3593 14.2103C10.4364 14.2836 10.5574 14.2836 10.6346 14.2103L15.9881 9.13062C16.0653 9.0574 16.1863 9.0574 16.2634 9.13062L16.8471 9.68444C16.9302 9.7633 16.9302 9.89574 16.8471 9.9746L10.6346 15.8694Z"
+            fill="white"
+            fillOpacity="0.6"
+          />
+          <path
+            d="M15.8857 8.89551C16.0322 8.80288 16.2198 8.80275 16.3662 8.89551L16.4355 8.94922L17.0195 9.50293C17.2064 9.68038 17.2065 9.97883 17.0195 10.1562L10.8066 16.0508C10.6331 16.2154 10.3611 16.2153 10.1875 16.0508L6.98047 13.0088C6.79352 12.8314 6.79364 12.5329 6.98047 12.3555L7.56445 11.8018L7.63379 11.748C7.7802 11.6552 7.96779 11.6554 8.11426 11.748L8.18359 11.8018L10.4961 13.9961L15.8164 8.94922L15.8857 8.89551Z"
+            stroke="white"
+            strokeOpacity="0.6"
+            strokeWidth="0.5"
+            strokeLinecap="round"
+          />
+        </g>
+      </g>
+    </svg>
+  );
+}

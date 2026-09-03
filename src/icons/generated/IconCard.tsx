@@ -1,0 +1,33 @@
+import type { SVGProps } from "react";
+
+/** Figma: Design system → Icons → "card" (21.5×17.5) */
+export function IconCard({ size, width, height, ...props }: SVGProps<SVGSVGElement> & { size?: number | string }) {
+  return (
+    <svg
+      viewBox="0 0 21.5 17.5"
+      width={width ?? size ?? 21.5}
+      height={height ?? size ?? 17.5}
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+      focusable="false"
+      {...props}
+    >
+      <g id="card-Group">
+        <path
+          id="card-Vector"
+          d="M0.750001 8.75C0.750001 4.979 0.750001 3.093 1.922 1.922C3.094 0.751001 4.979 0.750001 8.75 0.750001H12.75C16.521 0.750001 18.407 0.750001 19.578 1.922C20.749 3.094 20.75 4.979 20.75 8.75C20.75 12.521 20.75 14.407 19.578 15.578C18.406 16.749 16.521 16.75 12.75 16.75H8.75C4.979 16.75 3.093 16.75 1.922 15.578C0.751001 14.406 0.750001 12.521 0.750001 8.75Z"
+          stroke="#7D7D7D"
+          strokeWidth="1.5"
+        />
+        <path
+          id="card-Vector_2"
+          d="M8.75 12.75H4.75M12.75 12.75H11.25M0.750001 6.75H20.75"
+          stroke="#7D7D7D"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+        />
+      </g>
+    </svg>
+  );
+}
