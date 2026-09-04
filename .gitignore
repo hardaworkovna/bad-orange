@@ -51,3 +51,6 @@ reference/design-system.html
 .figma-ref
 reference/dist-plans
 reference/plans-page.html
+
+# transfer bundles used to sync this clone from the cloud session
+*.tar.gz
