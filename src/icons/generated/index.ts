@@ -1,6 +1,7 @@
 export { IconAlert } from "./IconAlert";
 export { IconApple } from "./IconApple";
 export { IconArrowDownSmall } from "./IconArrowDownSmall";
+export { IconArrowInline } from "./IconArrowInline";
 export { IconArrowRightDisabled } from "./IconArrowRightDisabled";
 export { IconArrowUp } from "./IconArrowUp";
 export { IconBack15 } from "./IconBack15";

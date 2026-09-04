@@ -1,7 +1,10 @@
+"use client";
 import type { SVGProps } from "react";
+import { useId } from "react";
 
 /** Figma: Design system → Icons → "check-red" (24×24) */
 export function IconCheckRed({ size, width, height, ...props }: SVGProps<SVGSVGElement> & { size?: number | string }) {
+  const uid = useId().replace(/[^a-zA-Z0-9]/g, "") + "-";
   return (
     <svg
       viewBox="0 0 24 24"
@@ -13,16 +16,16 @@ export function IconCheckRed({ size, width, height, ...props }: SVGProps<SVGSVGE
       focusable="false"
       {...props}
     >
-      <g id="check-red-Icon/Check">
+      <g id={`${uid}Icon/Check`}>
         <path
-          id="check-red-Vector"
+          id={`${uid}Vector`}
           d="M10.2587 17.2929C9.86815 17.6834 9.23498 17.6834 8.84446 17.2929L4.55867 13.0071C4.16814 12.6166 4.17354 11.978 4.56406 11.5875C4.95459 11.197 5.59315 11.1916 5.98367 11.5821L8.84446 14.4429C9.23498 14.8334 9.86815 14.8334 10.2587 14.4429L18.0195 6.68208C18.41 6.29156 19.0485 6.29695 19.4391 6.68748C19.8296 7.078 19.835 7.71656 19.4445 8.10708L10.2587 17.2929Z"
-          fill="url(#check-red-paint0_linear_0_67)"
+          fill={`url(#${uid}paint0_linear_0_67)`}
         />
       </g>
       <defs>
         <linearGradient
-          id="check-red-paint0_linear_0_67"
+          id={`${uid}paint0_linear_0_67`}
           x1="5.04596"
           y1="7.67663"
           x2="19.5939"

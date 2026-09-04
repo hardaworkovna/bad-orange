@@ -353,6 +353,12 @@
 }
 
 /* Glass surface used by tertiary buttons, arrows, popups */
+@utility cap-trim {
+  /* Figma trims display text to its cap height ([text-box-trim:trim-both]).
+     Chrome 133+/Safari 18.2+ do the same with text-box; older engines keep the
+     normal line box, which only makes the block a few px taller. */
+  text-box: trim-both cap alphabetic;
+}
 @utility glass {
   backdrop-filter: blur(var(--blur-glass));
 }

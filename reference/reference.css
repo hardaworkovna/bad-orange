@@ -1,0 +1,44 @@
+/* The reference page loads the app's real stylesheet, so every token and every
+   `type-*` / colour utility below is the same one the components ship with. */
+@import "../src/app/globals.css";
+
+/* Storybook and Next both bind the two families to CSS variables; the reference
+   page is plain Vite, so it binds them to the Google Fonts faces instead. */
+:root {
+  --font-special-gothic: "Special Gothic Expanded One";
+  --font-host-grotesk: "Host Grotesk";
+
+  /* page chrome — deliberately not product tokens, so you can always tell the
+     page apart from the specimens inside it */
+  --ground: #0b0b0c;
+  --rule: rgb(255 255 255 / 0.09);
+  --meta: #8c8380;
+  --spec: #b9b2af;
+  --mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+body {
+  background: var(--ground);
+}
+
+.ref-mono {
+  font-family: var(--mono);
+}
+.ref-rule {
+  border-color: var(--rule);
+}
+.ref-meta {
+  color: var(--meta);
+}
+.ref-spec {
+  color: var(--spec);
+}
+.ref-ground {
+  background: var(--ground);
+}
+
+/* a "well" paints the product's real ground, so everything inside it is the product */
+.ref-well {
+  background: var(--color-black);
+  border: 1px solid var(--rule);
+}

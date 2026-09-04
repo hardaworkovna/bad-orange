@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "eslint",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "reference": "vite build -c reference/vite.config.mts && node reference/inline.mjs",
+    "reference:plans": "vite build -c reference/vite.plans.config.mts && node reference/inline-plans.mjs"
   },
   "dependencies": {
     "clsx": "^2.1.1",
@@ -28,6 +30,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "^6.1.1",
     "@vitest/browser-playwright": "latest",
     "@vitest/coverage-v8": "latest",
     "eslint": "^9",

@@ -36,7 +36,12 @@ export function AccordionItem({
     onToggle?.(next);
   };
   return (
-    <div className={cn("border-stroke bg-gradient-card-glow w-full rounded-xl border-2 p-6 md:p-10", className)}>
+    // Figma draws the 2px stroke on the frame edge, so the padding it reports (20
+    // mobile / 40 desktop) is measured from the outside: with border-box that is a
+    // 2px-smaller CSS padding, which keeps the row heights at Figma's 76 / 112.
+    <div
+      className={cn("border-stroke bg-gradient-card-glow w-full rounded-xl border-2 p-[18px] md:p-[38px]", className)}
+    >
       <h3 className="m-0">
         <button
           type="button"
@@ -57,7 +62,10 @@ export function AccordionItem({
         role="region"
         aria-labelledby={`${id}-trigger`}
         hidden={!open}
-        className="type-body-lg text-white-80 mt-5 max-w-[564px]"
+        // Figma sizes the answer box at 564, but its Host Grotesk renders ~2% narrower
+        // than the browser's, so 564 here costs an extra line. 600 reproduces Figma's
+        // three-line block and its 189px row height.
+        className="type-body-lg text-white-80 mt-5 max-w-[600px]"
       >
         {children}
       </div>

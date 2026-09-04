@@ -65,18 +65,36 @@ for (const file of files) {
   for (const [k, v] of Object.entries(attrMap)) {
     inner = inner.replaceAll(` ${k}=`, ` ${v}=`);
   }
-  // Scope ids so two icons on one page don't collide
-  inner = inner.replace(/id="([^"]+)"/g, (_, id) => `id="${slug}-${id}"`);
-  inner = inner.replace(/url\(#([^)]+)\)/g, (_, id) => `url(#${slug}-${id})`);
-  inner = inner.replace(/xlinkHref="#([^"]+)"/g, (_, id) => `xlinkHref="#${slug}-${id}"`);
+  // Ids that something inside the icon actually points at (gradients, masks,
+  // filters, clip paths). Figma also puts an id on every layer; those are inert.
+  const referenced = new Set();
+  for (const m of inner.matchAll(/url\(#([^)]+)\)/g)) referenced.add(m[1]);
+  for (const m of inner.matchAll(/xlink:href="#([^"]+)"/g)) referenced.add(m[1]);
+  const needsUid = referenced.size > 0;
+
+  // Scope ids so two icons on one page don't collide. When the icon has internal
+  // references, the prefix has to be unique per *instance* too: React renders the
+  // desktop and mobile trees of a page at the same time, and a duplicate gradient
+  // id makes the second copy resolve to the hidden first one and paint nothing.
+  const prefix = needsUid ? "${uid}" : `${slug}-`;
+  const wrap = (id) => (needsUid ? `{\`${prefix}${id}\`}` : `"${prefix}${id}"`);
+  inner = inner.replace(/id="([^"]+)"/g, (_, id) => `id=${wrap(id)}`);
+  inner = inner.replace(/url\(#([^)]+)\)/g, (_, id) => (needsUid ? `url(#\${${"uid"}}${id})` : `url(#${slug}-${id})`));
+  inner = inner.replace(/xlinkHref="#([^"]+)"/g, (_, id) =>
+    needsUid ? `xlinkHref={\`#${prefix}${id}\`}` : `xlinkHref="#${slug}-${id}"`,
+  );
+  // fill="url(#…)" etc. become JSX expressions when they carry the uid
+  if (needsUid) {
+    inner = inner.replace(/="(url\(#\$\{uid\}[^"]*\))"/g, "={`$1`}");
+  }
   // self-closing tags are already fine; comments → remove
   inner = inner.replace(/<!--[\s\S]*?-->/g, "");
 
-  const tsx = `import type { SVGProps } from "react";
-
+  const tsx = `${needsUid ? '"use client";\n' : ""}import type { SVGProps } from "react";
+${needsUid ? 'import { useId } from "react";\n' : ""}
 /** Figma: Design system → Icons → "${slug}" (${vw}×${vh}) */
 export function ${name}({ size, width, height, ...props }: SVGProps<SVGSVGElement> & { size?: number | string }) {
-  return (
+${needsUid ? '  const uid = useId().replace(/[^a-zA-Z0-9]/g, "") + "-";\n' : ""}  return (
     <svg
       viewBox="${viewBox}"
       width={width ?? size ?? ${vw}}

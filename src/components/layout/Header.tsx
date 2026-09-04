@@ -61,7 +61,9 @@ export function Header({
             >
               <Logo size="desktop" />
             </Link>
-            <nav aria-label="Main" className="absolute top-[19px] left-1/2 -translate-x-1/2">
+            {/* Figma 110:1076 lays the row out with space-between, so the nav sits
+                between logo and buttons rather than on the page centre. */}
+            <nav aria-label="Main">
               <ul className="flex items-center gap-10">
                 {NAV_ITEMS.map((it) => (
                   <li key={it.href}>
@@ -125,11 +127,12 @@ export function Header({
               <Logo size="mobile" />
             </Link>
             <div className="flex items-center gap-3">
-              <IconButton variant="glow" label="Menu" onClick={onMenu}>
-                <IconMenu />
-              </IconButton>
+              {/* Figma 390/Header puts search first, then the menu. */}
               <IconButton variant="glow" label="Search" onClick={onSearch}>
                 <IconSearch />
+              </IconButton>
+              <IconButton variant="glow" label="Menu" onClick={onMenu}>
+                <IconMenu />
               </IconButton>
             </div>
           </div>

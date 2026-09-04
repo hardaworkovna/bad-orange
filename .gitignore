@@ -43,5 +43,11 @@ next-env.d.ts
 *storybook.log
 storybook-static
 
-# local agent state
-.claude/
+# reference page build
+reference/dist
+reference/design-system.html
+
+# Figma reference screenshots used while matching a page
+.figma-ref
+reference/dist-plans
+reference/plans-page.html
