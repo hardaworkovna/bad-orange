@@ -1,7 +1,7 @@
 "use client";
 import type { ButtonHTMLAttributes, ReactNode } from "react";
 import { cn } from "@/lib/cn";
-import { IconArrowDownSmall, IconClose } from "@/icons/generated";
+import { IconArrowDownSmall, IconClose, IconFilterChevronDark, IconFilterChevronLight } from "@/icons/generated";
 
 /**
  * Figma: Design system → "Filters" (desktop) / "Mobile/Filter" / "Filter/Selected"
@@ -45,10 +45,13 @@ export function FilterButton({
         {children}
         {count ? ` (${count})` : ""}
       </span>
-      <IconArrowDownSmall
-        size={20}
-        className={cn("shrink-0 transition-transform [&_path]:stroke-current", open && "-scale-y-100")}
-      />
+      {/* Figma exports two chevrons for this pill: #121212 on the white fill,
+          white 80% on the grey disabled fill. */}
+      {state === "disabled" ? (
+        <IconFilterChevronLight className={cn("shrink-0 transition-transform", open && "-scale-y-100")} />
+      ) : (
+        <IconFilterChevronDark className={cn("shrink-0 transition-transform", open && "-scale-y-100")} />
+      )}
     </button>
   );
 }

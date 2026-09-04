@@ -29,6 +29,8 @@ export { IconEmoji } from "./IconEmoji";
 export { IconEyeClosed } from "./IconEyeClosed";
 export { IconEyeOpen } from "./IconEyeOpen";
 export { IconFacebook } from "./IconFacebook";
+export { IconFilterChevronDark } from "./IconFilterChevronDark";
+export { IconFilterChevronLight } from "./IconFilterChevronLight";
 export { IconForward15 } from "./IconForward15";
 export { IconGoogle } from "./IconGoogle";
 export { IconGpay } from "./IconGpay";
